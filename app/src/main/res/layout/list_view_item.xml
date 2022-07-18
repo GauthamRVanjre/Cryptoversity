@@ -5,6 +5,7 @@
     android:id="@+id/coinCard"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
+    android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 tools:text="BTC"/>
@@ -63,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="4dp"
                 android:layout_marginTop="24dp"
                 android:text="$"
                 android:textSize="16sp"
@@ -80,19 +82,12 @@
                 android:textColor="@color/black"
                 tools:text="10000"/>
 
-            <CheckBox
-                android:id="@+id/favCoinCheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="24dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                />
-
-
-
         </LinearLayout>
+
+
+
+
+
 
     </LinearLayout>
 

@@ -25,8 +25,9 @@ class CoinAdapter(val requireContext: Context, var coinList: List<Coins>) : Recy
         holder.binding.coinRank.text = currentCoin.rank
         holder.binding.coinName.text = currentCoin.name
         holder.binding.coinSymbol.text = currentCoin.symbol
-        holder.binding.coinPrice.text = currentCoin.price_usd
-        holder.binding.favCoinCheck.isChecked = false
+        val price = currentCoin.price_usd.toDouble()
+        val stringPrice = String.format("%.3f",price)
+        holder.binding.coinPrice.text = stringPrice
     }
 
     override fun getItemCount(): Int {
