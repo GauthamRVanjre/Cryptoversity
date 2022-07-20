@@ -1,5 +1,9 @@
 package com.example.cryptotracker.network
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Coins(
     val `24h_volume_usd`: String,
     val available_supply: String,
@@ -16,4 +20,4 @@ data class Coins(
     val rank: String,
     val symbol: String,
     val total_supply: String
-)
+) : Parcelable
