@@ -1,23 +1,32 @@
 package com.example.cryptotracker.network
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity(tableName = "coinEntity")
 data class Coins(
-    val `24h_volume_usd`: String,
-    val available_supply: String,
-    val id: String,
-    val last_updated: String,
-    val market_cap_usd: String,
-    val max_supply: String,
-    val name: String,
-    val percent_change_1h: String,
-    val percent_change_24h: String,
-    val percent_change_7d: String,
-    val price_btc: String,
-    val price_usd: String,
-    val rank: String,
-    val symbol: String,
-    val total_supply: String
+    var `24h_volume_usd`: String,
+    var available_supply: String,
+    @PrimaryKey
+    var id: String,
+    var last_updated: String,
+    var market_cap_usd: String,
+    var max_supply: String,
+    var name: String,
+    var percent_change_1h: String,
+    var percent_change_24h: String,
+    var percent_change_7d: String,
+    var price_btc: String,
+    var price_usd: String,
+    var rank: String,
+    var symbol: String,
+    var total_supply: String
 ) : Parcelable
+{
+    constructor() : this("","","","","","","",
+        "","","","","","",
+        "","")
+}
