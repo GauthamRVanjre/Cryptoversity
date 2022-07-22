@@ -6,14 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.cryptotracker.databinding.FragmentDetailBinding
 import com.example.cryptotracker.databinding.FragmentHomeBinding
+import com.example.cryptotracker.viewModel.CoinViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     lateinit var binding: FragmentDetailBinding
+    val viewModel: CoinViewModel by viewModels()
     val args : DetailFragmentArgs by navArgs<DetailFragmentArgs>()
 
     override fun onCreateView(
@@ -28,8 +32,11 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         binding.coinRank.text = args.coinData.rank
         binding.coinSymbol.text = args.coinData.symbol
 
-        binding.favCoinBtn.setOnClickListener {
+        val navBar : BottomNavigationView? = activity?.findViewById(R.id.bottomNavigationView)
+        navBar?.visibility = View.GONE
 
+        binding.favCoinBtn.setOnClickListener {
+            viewModel.addCoin(args.coinData) //adding coin to database
             Toast.makeText(requireContext(),"${args.coinData.name} is added to favorites",Toast.LENGTH_SHORT).show()
         }
         return binding.root

@@ -37,5 +37,10 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     //deals with database operations
+    fun getFavCoins() : LiveData<List<Coins>> = coinRepository.getFavCoins()
+
+    fun addCoin(coins: Coins) = coinRepository.addCoin(coins)
+
+    fun  deleteCoin(coins: Coins) = coinRepository.deleteCoin(coins)
 
 }
