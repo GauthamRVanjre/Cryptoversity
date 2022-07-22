@@ -25,15 +25,17 @@ class CoinAdapter(val requireContext: Context, var coinList: List<Coins>) : Recy
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val currentCoin = coinList[position]
-        holder.binding.coinRank.text = currentCoin.rank
-        holder.binding.coinName.text = currentCoin.name
-        holder.binding.coinSymbol.text = currentCoin.symbol
-        val price = currentCoin.price_usd.toDouble()
-        val stringPrice = String.format("%.3f",price)
-        holder.binding.coinPrice.text = stringPrice
-        holder.binding.coinCard.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(currentCoin)
-            Navigation.findNavController(it).navigate(action)
+        if(currentCoin.price_usd != null){
+            holder.binding.coinRank.text = currentCoin.rank
+            holder.binding.coinName.text = currentCoin.name
+            holder.binding.coinSymbol.text = currentCoin.symbol
+            val price = currentCoin.price_usd.toDouble()
+            val stringPrice = String.format("%.3f",price)
+            holder.binding.coinPrice.text = stringPrice
+            holder.binding.coinCard.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(currentCoin)
+                Navigation.findNavController(it).navigate(action)
+            }
         }
     }
 

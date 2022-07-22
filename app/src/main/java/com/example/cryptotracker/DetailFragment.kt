@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.cryptotracker.databinding.FragmentDetailBinding
 import com.example.cryptotracker.databinding.FragmentHomeBinding
@@ -26,6 +27,11 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         binding.coinName.text = args.coinData.name
         binding.coinRank.text = args.coinData.rank
         binding.coinSymbol.text = args.coinData.symbol
+
+        binding.favCoinBtn.setOnClickListener {
+
+            Toast.makeText(requireContext(),"${args.coinData.name} is added to favorites",Toast.LENGTH_SHORT).show()
+        }
         return binding.root
     }
 

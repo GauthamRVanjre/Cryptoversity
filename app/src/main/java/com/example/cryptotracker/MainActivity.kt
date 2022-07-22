@@ -7,11 +7,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.example.cryptotracker.database.CoinDatabase
+import com.example.cryptotracker.repository.CoinRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    lateinit var coinRepository: CoinRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +24,12 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         NavigationUI.setupActionBarWithNavController(this,navController)
 
+        //bottom navigation view
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
+
+        //coinrepository setup
+        coinRepository = CoinRepository(CoinDatabase.invoke(this))
     }
 
     override fun onSupportNavigateUp(): Boolean {
