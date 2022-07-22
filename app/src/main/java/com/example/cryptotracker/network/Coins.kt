@@ -8,8 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "coinEntity")
 data class Coins(
-    var `24h_volume_usd`: String,
-    var available_supply: String,
+
     @PrimaryKey
     var id: String,
     var last_updated: String,
@@ -28,5 +27,5 @@ data class Coins(
 {
     constructor() : this("","","","","","","",
         "","","","","","",
-        "","")
+        )
 }

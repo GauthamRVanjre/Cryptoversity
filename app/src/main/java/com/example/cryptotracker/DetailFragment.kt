@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.cryptotracker.databinding.FragmentDetailBinding
 import com.example.cryptotracker.databinding.FragmentHomeBinding
+import com.example.cryptotracker.network.Coins
 import com.example.cryptotracker.viewModel.CoinViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -35,9 +37,26 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         val navBar : BottomNavigationView? = activity?.findViewById(R.id.bottomNavigationView)
         navBar?.visibility = View.GONE
 
+
         binding.favCoinBtn.setOnClickListener {
-            viewModel.addCoin(args.coinData) //adding coin to database
+            val favCoinData = Coins(
+                id = args.coinData.id,
+                last_updated = args.coinData.last_updated,
+                market_cap_usd = args.coinData.market_cap_usd,
+                max_supply = args.coinData.max_supply,
+                name = args.coinData.name,
+                percent_change_1h = args.coinData.percent_change_1h,
+                percent_change_24h = args.coinData.percent_change_24h,
+                percent_change_7d = args.coinData.percent_change_7d,
+                price_btc = args.coinData.price_btc,
+                price_usd = args.coinData.price_usd,
+                rank = args.coinData.rank,
+                symbol = args.coinData.symbol,
+                total_supply = args.coinData.total_supply
+            )
+            viewModel.addCoin(favCoinData)
             Toast.makeText(requireContext(),"${args.coinData.name} is added to favorites",Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(it!!).navigate(R.id.action_detailFragment_to_homeFragment)
         }
         return binding.root
     }

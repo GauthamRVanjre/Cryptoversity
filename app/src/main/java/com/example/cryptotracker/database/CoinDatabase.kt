@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cryptotracker.network.Coins
 
-@Database(entities = [Coins::class], version = 1)
+@Database(entities = [Coins::class], version = 2)
 abstract class CoinDatabase : RoomDatabase() {
     abstract fun getCoinDAO() : CoinDao
 
@@ -24,6 +24,9 @@ abstract class CoinDatabase : RoomDatabase() {
                 context.applicationContext,
                 CoinDatabase::class.java,
                 "coin_db.db"
-            ).build()
+            )
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build()
     }
 }
