@@ -32,6 +32,12 @@ class CoinAdapter(val requireContext: Context, var coinList: List<Coins>) : Recy
             val price = currentCoin.price_usd.toDouble()
             val stringPrice = String.format("%.3f",price)
             holder.binding.coinPrice.text = stringPrice
+
+            //24h price
+            val price_24 = currentCoin.percent_change_24h.toDouble()
+            val string24 = String.format("%.3f",price_24)
+            holder.binding.coin24hPercent.text = string24
+
             holder.binding.coinCard.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(currentCoin)
                 Navigation.findNavController(it).navigate(action)
