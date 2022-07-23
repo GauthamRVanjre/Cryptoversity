@@ -15,8 +15,8 @@ class CoinRepository(private val coinDao: CoinDao) {
 
     fun getFavCoins() = coinDao.getfavCoins()
 
-    fun addCoin(coins: Coins) = coinDao.addCoin(coins)
+    suspend fun addCoin(coins: Coins) = coinDao.addCoin(coins)
 
-    fun deleteCoin(coins: Coins) = coinDao.deleteCoin(coins)
+    suspend fun deleteCoin(coins: Coins) = coinDao.deleteCoin(coins)
 
 }

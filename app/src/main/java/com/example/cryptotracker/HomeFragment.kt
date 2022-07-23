@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptotracker.adapter.CoinAdapter
 import com.example.cryptotracker.databinding.FragmentHomeBinding
 import com.example.cryptotracker.viewModel.CoinViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +25,9 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater,container,false)
+
+        val navBar : BottomNavigationView? = activity?.findViewById(R.id.bottomNavigationView)
+        navBar?.visibility = View.VISIBLE
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         viewModel.getCoins()
