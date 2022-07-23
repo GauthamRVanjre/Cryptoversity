@@ -30,7 +30,8 @@ class CoinAdapter(val requireContext: Context, var coinList: List<Coins>) : Recy
             holder.binding.coinName.text = currentCoin.name
             holder.binding.coinSymbol.text = currentCoin.symbol
             val price = currentCoin.price_usd.toDouble()
-            val stringPrice = String.format("%.3f",price)
+            val rupeePrice = price*80.0
+            val stringPrice = String.format("%.3f",rupeePrice)
             holder.binding.coinPrice.text = stringPrice
 
             //24h price
